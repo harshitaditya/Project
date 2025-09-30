@@ -8,6 +8,7 @@ function App() {
   return (
     <>
       <Routes>
+        <Route path="/" element={<LoginPage />} /> 
         <Route path="/register" element={<Register />} />
         <Route path="/userlogin" element={<LoginPage />} />
         <Route path="/userlogin/forgotpassword" element={<Forgotpassword />} />
