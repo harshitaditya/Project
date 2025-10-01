@@ -24,17 +24,17 @@ const Register = () => {
           top: "0",
           left: "0",
           width: "100%",
-          height: "80px",
+          height: "56px",
           zIndex: "1000",
         }}
       >
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl p-3 sm:p-5 font-bold text-white">
+        <h1 className="text-xl sm:text-2xl lg:text-3xl p-2 sm:p-3 font-bold text-white">
           Register
         </h1>
         <Smalldiv text="Login" />
       </div>
 
-      <div className="bg-[#106299] fixed inset-0 min-h-screen grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-center px-4 sm:px-6 lg:px-8 pt-20">
+      <div className="bg-[#106299] fixed inset-0 min-h-screen grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-5 items-center px-3 sm:px-4 lg:px-7 pt-14">
         <div className="hidden lg:flex justify-center items-center">
           <img
             src={registerimg}
@@ -44,7 +44,7 @@ const Register = () => {
         </div>
 
         <div className="flex justify-center items-center">
-          <div className="bg-white rounded-lg shadow-xl p-4 sm:p-6 lg:p-8 w-full max-w-md sm:max-w-lg lg:max-w-2xl">
+          <div className="bg-white rounded-md shadow-xl p-3 sm:p-4 lg:p-5 w-full max-w-sm sm:max-w-md lg:max-w-xl">
             {!otpsent ? (
               <Sendotpform
                 sendotpAction={sendotpAction}
