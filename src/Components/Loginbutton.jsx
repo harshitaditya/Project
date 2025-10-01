@@ -4,13 +4,14 @@ const Loginbutton = () => {
   const { pending } = useFormStatus();
 
   return (
+    <div className="flex justify-center items-center">
     <button
       type="submit"
       disabled={pending}
-      className={`w-full py-3 rounded-lg font-bold ${
+      className={`w-40 py-3 rounded-lg font-bold cursor-pointer lg:text-lg  sm:text-xl ${
         pending
           ? "bg-gray-400 cursor-not-allowed"
-          : "bg-blue-500 hover:bg-blue-600 text-white"
+          : "bg-[#3396D3] hover:bg-blue-600 text-white"
       }`}
     >
       {pending ? (
@@ -22,6 +23,7 @@ const Loginbutton = () => {
         "Login"
       )}
     </button>
+    </div>
   );
 };
 

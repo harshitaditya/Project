@@ -34,7 +34,7 @@ const Register = () => {
         <Smalldiv text="Login" />
       </div>
 
-      <div className="bg-[#106299] min-h-screen grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-center px-4 sm:px-6 lg:px-8 pt-20">
+      <div className="bg-[#106299] fixed inset-0 min-h-screen grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-center px-4 sm:px-6 lg:px-8 pt-20">
         <div className="hidden lg:flex justify-center items-center">
           <img
             src={registerimg}
