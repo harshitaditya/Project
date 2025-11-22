@@ -5,6 +5,8 @@ import LoginPage from "./Components/LoginPage";
 import Forgotpassword from "./Components/Forgotpassword";
 import Home from "./Components/Home";
 import Cart from "./Components/Cart";
+import Productspage from "./Components/Productspage";
+import Productdetail from "./Components/Productdetail";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route path="/userlogin" element={<LoginPage />} />
         <Route path="/userlogin/forgotpassword" element={<Forgotpassword />} />
         <Route path="/cart" element={<Cart/>}/>
+        <Route path="/Productspage" element={<Productspage/>}/>
+        <Route path="/Productdetail/:productId" element={<Productdetail />} />
       </Routes>
     </>
   );

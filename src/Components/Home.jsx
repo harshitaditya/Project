@@ -1,6 +1,5 @@
 import Navbar from "./Navbar";
 import Ad from "./Ad";
-import Category from "./Category";
 import Product from "./Product";
 
 const Home=()=>{
@@ -11,8 +10,7 @@ const Home=()=>{
         
          <Navbar/>
          <Ad/>
-         <Category/>
-         <Product text="All Products" item={products}/>
+         <Product/>
          
          </div>
        
