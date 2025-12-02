@@ -270,7 +270,7 @@ const Product = () => {
             </button>
 
             <div className="overflow-hidden">
-              <div className="flex gap-6 transition-transform duration-500 ease-in-out">
+              <div className="flex gap-6 transition-transform duration-500 ease-in-out mb-5">
                 {getVisibleItems().map((item, index) => (
                   <div
                     key={`${item._id || item.name}-${index}`}

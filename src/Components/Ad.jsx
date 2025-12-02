@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { BadgeCheck, CirclePercent, CreditCard, Truck, ChevronLeft, ChevronRight } from "lucide-react";
 
-
 import Ad1 from "../Images/Ad_image1.png";
 import Ad2 from "../Images/Ad_image2.png";
 import Ad3 from "../Images/Ad_image3.png";
@@ -9,6 +8,7 @@ import Ad4 from "../Images/Ad_image4.png";
 
 const Ad = () => {
   const images = [Ad1, Ad2, Ad3, Ad4];
+  
   const [currentimage, setcurrentimage] = useState(0);
 
   useEffect(() => {
@@ -31,9 +31,8 @@ const Ad = () => {
 
   return (
     <div className="w-full">
-
-      <div className="relative w-full h-[250px] sm:h-[300px] lg:h-[380px] overflow-hidden bg-gradient-to-r from-blue-900 to-cyan-500 rounded-lg">
-      
+      {/* Image Slider - Hidden on mobile (sm and below), visible on tablet and above */}
+      <div className="hidden md:block relative w-full h-[300px] lg:h-[380px] overflow-hidden bg-gradient-to-r from-blue-900 to-cyan-500 rounded-lg">
         <img
           src={images[currentimage]}
           alt="Ad Slider"
@@ -77,13 +76,13 @@ const Ad = () => {
           ))}
         </div>
 
-       
+        {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
       </div>
 
-     
+      {/* Features Grid - Always visible */}
       <div className="bg-white w-full">
-        <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4 px-4 py-5 max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-4 py-5 max-w-7xl mx-auto">
           <div className="flex items-center space-x-3 p-2.5 hover:bg-gray-50 rounded-lg transition-colors">
             <div className="bg-[#106299]/10 p-2 rounded-full flex-shrink-0">
               <BadgeCheck className="text-[#106299] w-6 h-6 lg:w-7 lg:h-7" />
