@@ -33,7 +33,8 @@ const Productspage = () => {
       try {
         const res = await fetch("https://fuertehealthcare.onrender.com/api/brands");
         const data = await res.json();
-        console.log("Response: ", data);
+        // console.log("Response: ", data);
+        const brandsArray= data.brands||[];   // when Api works -> []  or data.brands->null. 
         
        const brandMapping = {};
     brandsArray.forEach(brand => {
@@ -54,8 +55,9 @@ const Productspage = () => {
       try {
         const res = await fetch("https://fuertehealthcare.onrender.com/api/items");
         const data = await res.json();
+        // console.log("Response: ",data);
         
-        let itemsArray = data.data || data.items || data || [];
+        let itemsArray = data.data || [];
         
         setItems(itemsArray);
         
@@ -133,8 +135,9 @@ const Productspage = () => {
     }
   };
 
-  const handleViewDetails = (productId) => {
-    navigate(`/Productdetail/${productId}`);
+  const handleViewDetails = (item) => {
+    navigate(`/product/${item.slug}`);
+
   };
 
   const handleBrandChange = (brandId) => {
@@ -525,7 +528,7 @@ const Productspage = () => {
 
                       <div className="flex gap-2">
                         <button
-                          onClick={() => handleViewDetails(item._id)}
+                          onClick={() => handleViewDetails(item)}
                           className="flex-1 bg-white border-2 border-teal-700 text-teal-700 py-2 px-3 rounded-lg font-semibold hover:bg-teal-50 transition-colors text-sm"
                         >
                           View Details

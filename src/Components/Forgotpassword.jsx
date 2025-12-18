@@ -1,6 +1,7 @@
 import { useActionState } from "react";
 import forgotimg from "../Images/loginimg.png";
 const Forgotpassword = ({ onBack }) => {
+  
   const handleforgotpassword = async (prevState, formdata) => {
     const email = formdata.get("email");
 

@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { Star, MapPin, Phone, ChevronRight, ArrowLeft } from "lucide-react";
-import { useParams, useNavigate } from "react-router";
+import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 
 const Productdetail = () => {
-  const { productId } = useParams();
+  const { slug } = useParams();
   const navigate = useNavigate();
 
   const [product, setProduct] = useState(null);
@@ -24,14 +24,18 @@ const Productdetail = () => {
         );
         const data = await res.json();
 
-        console.log("API Response:", data);
+        // console.log("productdetail Response:", data);
 
-        let itemsArray = data.data || data.items || data.products || [];
-        const selectedProduct = itemsArray.find(
-          (item) => item._id === productId
-        );
+        let itemsArray = data.data || [];
+        const selectedProduct = itemsArray.find( (item) => item.slug === slug);
 
-        console.log("Selected Product:", selectedProduct);
+
+        // itemsArray.forEach((item) => {
+        //   console.log("Item slug:", item.slug, "Item name:", item.name);
+        // });
+        // console.log("URL slug:", slug);
+        // console.log("Selected Product:", selectedProduct);
+
         setProduct(selectedProduct);
         setLoading(false);
       } catch (err) {
@@ -40,16 +44,16 @@ const Productdetail = () => {
       }
     };
 
-    if (productId) {
+    if (slug) {
       fetchProduct();
     }
-  }, [productId]);
+  }, [slug]);
 
   const handleBack = () => {
     navigate(-1);
   };
 
-  // Add to cart for guest users 
+  // Add to cart for guest users
   const addToGuestCart = (item) => {
     try {
       const guestCart = localStorage.getItem("guestCart");
@@ -61,12 +65,10 @@ const Productdetail = () => {
       );
 
       if (existingItemIndex !== -1) {
-       
         cartItems[existingItemIndex].qty += 1;
         cartItems[existingItemIndex].total =
           cartItems[existingItemIndex].price * cartItems[existingItemIndex].qty;
       } else {
-       
         cartItems.push({
           item: item,
           qty: 1,
@@ -308,9 +310,7 @@ const Productdetail = () => {
                       />
                     ))}
                   </div>
-                  <span className="text-lg font-semibold">
-                    {rating} / 5.0
-                  </span>
+                  <span className="text-lg font-semibold">{rating} / 5.0</span>
                 </div>
 
                 {product.about && (
@@ -408,9 +408,7 @@ const Productdetail = () => {
                 <h3 className="text-lg font-semibold mb-2">Rajkot</h3>
                 <div className="flex items-start gap-4 mb-4">
                   <div className="bg-teal-100 p-3 rounded flex-shrink-0">
-                    <div className="text-teal-700 font-bold text-sm">
-                      SURGI
-                    </div>
+                    <div className="text-teal-700 font-bold text-sm">SURGI</div>
                     <div className="text-teal-700 text-xs">SELECT</div>
                   </div>
                   <div>

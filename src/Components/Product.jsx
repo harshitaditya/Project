@@ -11,35 +11,30 @@ const Product = () => {
   const userId = localStorage.getItem("userId");
 
   useEffect(() => {
-    const fetchproduct = async () => {
-      try {
-        const res = await fetch(
-          "https://fuertehealthcare.onrender.com/api/items"
-        );
-        const data = await res.json();
+  const fetchProduct = async () => {
+    try {
+      const res = await fetch(
+        "https://fuertehealthcare.onrender.com/api/items"
+      );
 
-        console.log("API Response:", data);
-        console.log("Object keys:", Object.keys(data));
+      const response = await res.json();
+      // console.log("Product response: ",response);
+      // console.log("Response.data: ",response.data);
 
-        let itemsArray = [];
-        if (data.items) {
-          itemsArray = data.items;
-        } else if (data.data) {
-          itemsArray = data.data;
-        } else if (data.products) {
-          itemsArray = data.products;
-        }
+      
+      const products = response?.data|| [];
 
-        console.log("Items:", itemsArray);
-        setitems(itemsArray);
-        setloading(false);
-      } catch (err) {
-        console.log("Error:", err);
-        setloading(false);
-      }
-    };
-    fetchproduct();
-  }, []);
+      setitems(products);
+      setloading(false);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      setloading(false);
+    }
+  };
+
+  fetchProduct();
+}, []);
+
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev === 0 ? items.length - 1 : prev - 1));
@@ -320,7 +315,7 @@ const Product = () => {
                       </div>
 
                       <div className="flex gap-2">
-                        <Link to={`/Productdetail/${item._id}`} className="flex-1">
+                        <Link  to={`/product/${item.slug}`} className="flex-1">
                           <button className="w-full bg-white border-2 border-teal-600 text-teal-600 py-2 px-4 rounded-lg font-semibold hover:bg-teal-50 transition-colors text-sm">
                             View Details
                           </button>
